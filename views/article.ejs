@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" />
+    <title>🙆‍♀️</title>
+  </head>
+  <body>
+    <%- include('nav.ejs'); %>
+    <div class="page-content">
+        <div class="previews">
+            <% posts.forEach( (post) => { %>
+              <div class="preview">
+                <a href="/article/<%=post._id%>">
+                  <div class="preview-top">
+                    <h3 class="preview-title"><%=post.title%></h3>
+                    <p class="preview-summary"><%=post.summary%></p>
+                    <span class="date"> <%= post.date %></span>
+                  </div>
+                  <div class="preview-bottom">
+                    <% if(post.imageSrc){ %>
+                      <img src=<%=post.imageSrc%> alt="" class="preview-image">
+                    <% } %>
+                  </div>
+              </a>
+              </div>
+              <% }) %>
+          </div>
+    </div>
+    <%- include('footer.ejs'); %>
+  </body>
+</html>

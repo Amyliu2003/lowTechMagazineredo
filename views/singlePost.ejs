@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link href="/style.css" rel="stylesheet" />
+    <script src="/projetc.js"></script>
+    <title>🙆‍♀️</title>
+  </head>
+  <body>
+    <%- include('nav.ejs'); %>
+    <div class="page-content">
+      <div class="post">
+        <div class="post-banner">
+          <h2 class="post-title"><%=post.title%></h2>
+          <h3 class="post-summary"><%=post.summary%></h3>
+          <span class="date"> <%= post.date %></span>
+          <br>
+          <% if(post.imageSrc){ %>
+            <img src="../<%=post.imageSrc%>" alt="" class="post-image">
+          <% } %>
+        </div>
+        <div class="inner-line"></div>
+        <br>
+          <div class="post-body">  <%- post.articleBody %></div>
+      </div>
+    </div>
+    <%- include('footer.ejs'); %>
+  </body>
+</html>

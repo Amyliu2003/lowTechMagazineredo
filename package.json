@@ -1,0 +1,23 @@
+{
+  "name": "samheckle-networked-media-sp-24-main-starter-code-project4.2-starter",
+  "version": "1.0.0",
+  "description": "web demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "web"
+  ],
+  "author": "Amy Liu",
+  "license": "ISC",
+  "dependencies": {
+    "@seald-io/nedb": "^4.0.4",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.0"
+  }
+}

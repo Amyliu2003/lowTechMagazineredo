@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <link href="/style.css" rel="stylesheet" />
+    <title>🙆‍♀️</title>
+  </head>
+  <body>
+    <%- include('nav.ejs'); %>
+    <div class="page-content">
+      <form class="form-data" method="POST" action="/upload" enctype="multipart/form-data">
+        <div class="submit-item">
+          <label for="title">Title:</label>
+          <input type="text" name="title">
+        </div>
+        <div class="submit-item">
+          <label for="file">Title Image:</label>
+          <input type="file" name="theImage">
+        </div>
+        <div class="submit-item">
+          <label for="feature">Featured:</label>
+          <select name="feature">
+            <option value="featured">Yes</option>
+            <option value="not-featured">No</option>
+          </select>
+        </div>
+        <div class="article-submission">
+          <label for="summary">Summary:</label>
+          <textarea name="summary" id="" cols="30" rows="4"></textarea>
+        </div>
+  
+          <div class="aricle-submision">
+            <label for="article">Article Body:</label>
+            <div id="article" contenteditable="TRUE" class="article-text"></div>
+            <input type="hidden" name="articleBody" id="articleBody">
+            <input type="submit" value="submit"> 
+          </div>
+      </form>
+    </div>
+    <%- include('footer.ejs'); %>
+    <script>
+      // Correct place for your JavaScript
+      document.querySelector('.form-data').addEventListener('submit', function() {
+        var articleContent = document.getElementById('article').innerHTML;
+        document.getElementById('articleBody').value = articleContent;
+      });
+    </script>
+  </body>
+</html>

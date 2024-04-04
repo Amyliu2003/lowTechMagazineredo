@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <link href="/style.css" rel="stylesheet" />
+    <title>🙆‍♀️</title>
+  </head>
+  <body>
+    <%- include('nav.ejs'); %>
+   <div class="page-content">
+    <div class="all-posts">
+      <div class="banner">
+      <div class="banner-left">
+        <a href="/article/<%=featuredPost._id%>">
+          <h3 class="post-title"><%=featuredPost.title%></h3>
+          <p class="post-summary"><%=featuredPost.summary%></p>
+          <span class="date"> <%= featuredPost.date %></span>
+        </a>
+      </div>
+      <div class="banner-right">
+        <a href="/article/<%=featuredPost._id%>">
+          <% if(featuredPost.imageSrc){ %>
+            <img src=<%=featuredPost.imageSrc%> alt="" class="banner-image">
+          <% } %>
+        </a>
+      </div>
+    </div>
+    <div class="line"></div>
+  <div class="previews">
+    <% posts.forEach( (post) => { %>
+      <div class="preview">
+        <a href="/article/<%=post._id%>">
+          <div class="preview-top">
+            <h3 class="preview-title"><%=post.title%></h3>
+            <p class="preview-summary"><%=post.summary%></p>
+            <span class="date"> <%= post.date %></span>
+          </div>
+          <div class="preview-bottom">
+            <% if(post.imageSrc){ %>
+              <img src=<%=post.imageSrc%> alt="" class="preview-image">
+            <% } %>
+          </div>
+      </a>
+      </div>
+      <% }) %>
+  </div>
+</div>    
+   </div>
+    <%- include('footer.ejs'); %>
+  </body>
+</html>
