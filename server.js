@@ -1,6 +1,8 @@
 const express = require("express"); 
 const multer = require("multer"); 
 const bodyParser = require("body-parser"); 
+const cookieParser = require('cookie-parser');
+
 
 const app = express();
 
@@ -17,11 +19,24 @@ const upload = multer({
 
 
 app.use(express.static("public")); 
+app.use(cookieParser());
 app.use(urlEncodedParser);
 app.set("view engine", "ejs"); 
 
 
 app.get("/", (request, response) => {
+
+  console.log(request.cookies.visits);
+  if(request.cookies.visits){
+    let newVisit=parseInt(request.cookies.visits)+1;
+    response.cookie("visits",newVisit,{expires:new Date (Date.now()+100*365*24*60*60*1000)})
+  }else{
+    response.cookie("visits",1,{expires:new Date (Date.now()+100*365*24*60*60*1000)})
+  }
+
+
+
+
   let queryFeatured = { feature: "featured" };
   let sortQuery = { timestamp: -1 };
 
@@ -54,7 +69,7 @@ app.get("/", (request, response) => {
         return response.status(500).send("Error fetching posts");
       }
 
-      response.render("index.ejs", { featuredPost: featured, posts: restOfPosts });
+      response.render("index.ejs", { featuredPost: featured, posts: restOfPosts, visitsToSite:request.cookies.visits });
     });
   }
 });
